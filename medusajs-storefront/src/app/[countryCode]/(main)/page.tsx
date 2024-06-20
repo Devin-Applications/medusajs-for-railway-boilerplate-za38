@@ -8,9 +8,9 @@ import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "Drivigo - Your Travel Package Solution",
   description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+    "Discover and book the best travel packages with Drivigo.",
 }
 
 const getCollectionsWithProducts = cache(
@@ -68,7 +68,7 @@ export default async function Home({
 
   return (
     <>
-      <Hero />
+      <Hero title="Welcome to Drivigo" subtitle="Discover and book the best travel packages" />
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
