@@ -1,91 +1,96 @@
-<p align="center">
-  <a href="https://www.medusajs.com">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-      <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg" width=100>
-    </picture>
-  </a>
-  <a href="https://railway.app/template/QvfPwp?referralCode=-Yg50p">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://railway.app/brand/logo-light.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://railway.app/brand/logo-dark.svg">
-      <img alt="Railway logo" src="https://railway.app/brand/logo-light.svg" width=100>
-    </picture>
-  </a>
-</p>
+# Drivigo
 
-<h2 align="center">
-  Medusajs open source ecommerce platform<br>
-  <a href="https://railway.app/template/QvfPwp?referralCode=-Yg50p">one-click deploy on railway!</a>
-</h2>
+Drivigo is an online travel package selling site built using the Medusa framework and deployed on Railway. This project consists of a MedusaJS backend and a Next.js frontend, providing a seamless e-commerce experience for travel packages.
 
-<h1 align="center">
-  Need help?<br>
-  <a href="https://funkyton.com/medusajs-free-fully-open-source-ecommerce-solution/">Step by step tutorial, with screenshots and video</a>
-</h1>
+## Overview
 
+Drivigo leverages the power of Medusa for the backend and Next.js for the frontend to deliver a performant and scalable e-commerce platform. The project is deployed on Railway, ensuring easy deployment and management of the application.
 
+## Backend Service: medusajs-backend
 
+### Railway Setup
 
+- Change the value of environment variables: `COOKIE_SECRET` and `JWT_SECRET` to secure random values.
+- Configure Cloudinary credentials: `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET`.
 
-<p align="center">
-Combine Medusa's modules for your commerce backend with the newest Next.js 14 features for a performant storefront.</p>
+### Local Setup
 
-<p align="center">
-  <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
-  </a>
-  <a href="https://discord.gg/xpCwq3Kfn8">
-    <img src="https://img.shields.io/badge/chat-on%20discord-7289DA.svg" alt="Discord Chat" />
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=medusajs">
-    <img src="https://img.shields.io/twitter/follow/medusajs.svg?label=Follow%20@medusajs" alt="Follow @medusajs" />
-  </a>
-</p>
+1. Install dependencies:
+   ```bash
+   yarn
+   ```
 
-## About this boilerplate
-This boilerplate is a monorepo consisting of snapshot of a medusajs backend and storefront app created with `npx create-medusa-app@latest` February 2024. Modified to be plug n' play deployable on [railway.app](https://railway.app?referralCode=-Yg50p)!
+2. Rename `.env.template` to `.env` and configure the environment variables.
 
+3. To connect to your online database from local, copy the `DATABASE_URL` value generated on Railway and add it to your `.env`.
 
-# medusajs-backend
+### Requirements
 
-### railway setup
-Please change the value of environtment variables: `COOCKIE_SECRET` and `JWT_SECRET`.
+- **Postgres database** (automatically generated if using Railway template)
+- **Redis** (automatically generated if using Railway template)
 
-### local setup
-- Install dependencies `yarn`
-- Rename `.env.template` ->  `.env`
-- To connect to your online database, from local; copy the `DATABASE_URL` value that have been auto generated on railway, and add to your `.env`
+### Optional
 
-### requirements
-- **postgres database** (will be automatically generated if using railway template)
-- **redis** (will be automatically generated if using railway template)
+- **Cloudinary**: Use Cloudinary for media services.
+  1. Sign up for a free account with [Cloudinary](https://cloudinary.com/invites/lpov9zyyucivvxsnalc5/yhlpdo1vaw2mq1la0nks?t=default) and choose "developer API calls" type of user.
+  2. Add your `cloud_name`, `api_key`, and `api_secret` to `.env.local` to enable Cloudinary as a file service in the local dev environment.
+  3. Configure the same environment variables in your Railway dashboard to enable Cloudinary in production.
+  4. For more setup details, visit [Medusa File Cloudinary](https://medusajs.com/plugins/medusa-file-cloudinary/).
 
-### optional
- - **cloudinary**: I highly recommend using a proper media service.
-   1. Sign up a free account with [cloudinary](https://cloudinary.com/invites/lpov9zyyucivvxsnalc5/yhlpdo1vaw2mq1la0nks?t=default) choose "developer API calls" type of user.
-   2. Add your `cloud_name`, `api_key` & `api_secret` to .env.local this will eneable Cloudinary as a file service on local dev environment
-   3. Configure the same environment variables in your railway dashboard to enable cloudinary in production.
-   4. If the steps above was confusin, visit [https://medusajs.com/plugins/medusa-file-cloudinary/](https://medusajs.com/plugins/medusa-file-cloudinary/) for more setup details. 
+### Commands
 
-### commands
-`cd medusajs-backend/`
-`yarn build` will compile app.
-`yarn dev` will start local admin dashboard app to manage products and orders etc.
-`yarn start` will start the backend server, needed for the storefront
+- Compile the app:
+  ```bash
+  yarn build
+  ```
 
-# medusa-storefront
+- Start the local admin dashboard app to manage products and orders:
+  ```bash
+  yarn dev
+  ```
 
-### local setup
-intall dependencies `yarn`
-Rename `.env.local.template` ->  `.env.local`
+- Start the backend server (needed for the storefront):
+  ```bash
+  yarn start
+  ```
 
-### requirements
-- running backend `npm run start` - needed to fetch products data and more, to build nextjs pages.
+## Frontend Service: medusa-storefront
 
-### commands
-`cd medusajs-storefront/`
-`yarn wait` will keep calling backend endpoint until a backend responds.
-`yarn build` will build the nextjs app - remember to start backend app prior to running this command.
-`yarn start` will serve the frontend web shop.
+### Local Setup
+
+1. Install dependencies:
+   ```bash
+   yarn
+   ```
+
+2. Rename `.env.local.template` to `.env.local` and configure the environment variables.
+
+### Requirements
+
+- Running backend (`npm run start`) to fetch product data and more, to build Next.js pages.
+
+### Commands
+
+- Keep calling backend endpoint until a backend responds:
+  ```bash
+  yarn wait
+  ```
+
+- Build the Next.js app (ensure the backend app is running before this command):
+  ```bash
+  yarn build
+  ```
+
+- Serve the frontend web shop:
+  ```bash
+  yarn start
+  ```
+
+## Deployment
+The backend service is deployed at: [Backend URL](https://medusajs-backend-production-8049.up.railway.app)
+
+The frontend service will be deployed once the setup is complete.
+
+## Medusa UI Components
+
+For UI components, follow the [Medusa UI documentation](https://docs.medusajs.com/ui).
